@@ -1,15 +1,12 @@
-import validators
 from fastapi import APIRouter
-from model2 import *
+from model import *
 
-apps = APIRouter(prefix="/get-objects-by-image")
+apps = APIRouter(prefix="/get-text")
 
 
 @apps.get("")
-async def get_image(url):
-    if validators.url(url) is True:
-        res = prediction(url)
+async def get_text(text):
+    result = classifier(text)
+    response = {'label': result[0]["label"], 'score': result[0]["score"]}
+    return response
 
-        return res
-    else:
-        return {"url": "This is not url"}
