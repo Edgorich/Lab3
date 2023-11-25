@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from model import *
 
-apps = APIRouter(prefix="/get-text")
+apps = APIRouter(prefix="/get_text")
 
 
 @apps.get("")
